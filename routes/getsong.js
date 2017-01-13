@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 var request = require('request');
@@ -49,8 +51,8 @@ router.get('/', function(req, res) {
       const search_string = siriusData.artist + ' - ' + siriusData.title;
       searchYoutube(search_string, (yt_err, yt_results) => {
 
-        if(!yt_err) {
-          const responseObj = buildResponseObejct(yt_results, songData);
+        if(!yt_err && yt_results.items.length > 0) {
+          const responseObj = buildResponseObject(yt_results, songData);
           database.saveTrack(req.db, responseObj);
           res.send(responseObj);
           return;
@@ -131,7 +133,7 @@ function searchYoutube(query, callback) {
   });
 }
 
-function buildResponseObejct(oldObj, songData) {
+function buildResponseObject(oldObj, songData) {
 
   var retObj = {};
   retObj.source_artist = songData.artist;
