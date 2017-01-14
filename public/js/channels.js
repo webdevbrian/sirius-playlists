@@ -1,4 +1,7 @@
 var sxmChannels = [{
+      value: "classicvinyl",
+      key: "Classic Vinyl"
+    }, {
         value: "8205",
         key: "'40s on 4"
     }, {

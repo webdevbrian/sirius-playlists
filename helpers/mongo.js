@@ -10,7 +10,7 @@ var database = {
     };
 
 
-    console.log("searching for:", conditions)
+    //console.log("searching for:", conditions)
 
     var cursor = collection.findOne(conditions, function(err, doc) {
 
@@ -29,7 +29,7 @@ var database = {
       time: toSave.time
     };
 
-    console.log("OUTPUT:", conditions, toSave)
+    //console.log("OUTPUT:", conditions, toSave)
 
     var options = {
       upsert: true
